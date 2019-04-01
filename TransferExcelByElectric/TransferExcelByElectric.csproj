@@ -56,6 +56,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="aboutme.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="aboutme.Designer.cs">
+      <DependentUpon>aboutme.cs</DependentUpon>
+    </Compile>
     <Compile Include="DB\OperateIniFile.cs" />
     <Compile Include="DB\ReturnJson1.cs" />
     <Compile Include="HttpGetPost.cs" />
@@ -67,6 +73,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="aboutme.resx">
+      <DependentUpon>aboutme.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainFrm.resx">
       <DependentUpon>MainFrm.cs</DependentUpon>
     </EmbeddedResource>

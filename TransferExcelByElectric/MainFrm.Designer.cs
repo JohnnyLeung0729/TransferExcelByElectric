@@ -36,7 +36,7 @@
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.Tsmi_exit = new System.Windows.Forms.ToolStripMenuItem();
             this.帮助HToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.关于我们AToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmi_aboutme = new System.Windows.Forms.ToolStripMenuItem();
             this.Prob_scanspan = new System.Windows.Forms.ProgressBar();
             this.label1 = new System.Windows.Forms.Label();
             this.txt_excelfile = new System.Windows.Forms.TextBox();
@@ -107,16 +107,17 @@
             // 帮助HToolStripMenuItem
             // 
             this.帮助HToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.关于我们AToolStripMenuItem});
+            this.tsmi_aboutme});
             this.帮助HToolStripMenuItem.Name = "帮助HToolStripMenuItem";
             this.帮助HToolStripMenuItem.Size = new System.Drawing.Size(74, 24);
             this.帮助HToolStripMenuItem.Text = "帮助(&H)";
             // 
-            // 关于我们AToolStripMenuItem
+            // tsmi_aboutme
             // 
-            this.关于我们AToolStripMenuItem.Name = "关于我们AToolStripMenuItem";
-            this.关于我们AToolStripMenuItem.Size = new System.Drawing.Size(168, 26);
-            this.关于我们AToolStripMenuItem.Text = "关于我们(&A)";
+            this.tsmi_aboutme.Name = "tsmi_aboutme";
+            this.tsmi_aboutme.Size = new System.Drawing.Size(181, 26);
+            this.tsmi_aboutme.Text = "关于我们(&A)";
+            this.tsmi_aboutme.Click += new System.EventHandler(this.tsmi_aboutme_Click);
             // 
             // Prob_scanspan
             // 
@@ -312,6 +313,7 @@
             // 
             // timer_send
             // 
+            this.timer_send.Interval = 1000;
             this.timer_send.Tick += new System.EventHandler(this.timer_send_Tick);
             // 
             // MainFrm
@@ -366,7 +368,7 @@
         private System.Windows.Forms.ToolStripMenuItem Tsmi_exit;
         private System.Windows.Forms.ToolStripMenuItem 帮助HToolStripMenuItem;
         private System.Windows.Forms.ProgressBar Prob_scanspan;
-        private System.Windows.Forms.ToolStripMenuItem 关于我们AToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tsmi_aboutme;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txt_excelfile;
         private System.Windows.Forms.Label label2;

@@ -312,5 +312,10 @@ namespace TransferExcelByElectric
             Prob_scanspan.Value += 1;
             //Console.WriteLine(Prob_scanspan.Value);
         }
+
+        private void tsmi_aboutme_Click(object sender, EventArgs e)
+        {
+            new aboutme().ShowDialog();
+        }
     }
 }
