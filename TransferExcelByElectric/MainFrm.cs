@@ -317,5 +317,10 @@ namespace TransferExcelByElectric
         {
             new aboutme().ShowDialog();
         }
+
+        private void Tsmi_setsys_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(TransferExcelByElectric.Properties.Resources.str_noapp, TransferExcelByElectric.Properties.Resources.str_noapp_title, MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
     }
 }

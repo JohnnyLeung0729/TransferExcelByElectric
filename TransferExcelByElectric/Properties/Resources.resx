@@ -147,4 +147,10 @@
   <data name="str_errloadexcel" xml:space="preserve">
     <value>调用数据源文件出错！</value>
   </data>
+  <data name="str_noapp" xml:space="preserve">
+    <value>功能即将开通，请联系管理员</value>
+  </data>
+  <data name="str_noapp_title" xml:space="preserve">
+    <value>未开通功能</value>
+  </data>
 </root>

@@ -149,5 +149,23 @@ namespace TransferExcelByElectric.Properties {
                 return ResourceManager.GetString("str_errloadexcel", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   查找类似 功能即将开通，请联系管理员 的本地化字符串。
+        /// </summary>
+        internal static string str_noapp {
+            get {
+                return ResourceManager.GetString("str_noapp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   查找类似 未开通功能 的本地化字符串。
+        /// </summary>
+        internal static string str_noapp_title {
+            get {
+                return ResourceManager.GetString("str_noapp_title", resourceCulture);
+            }
+        }
     }
 }
