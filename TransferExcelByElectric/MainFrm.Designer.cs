@@ -32,6 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainFrm));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.系统SToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmi_settime = new System.Windows.Forms.ToolStripMenuItem();
             this.Tsmi_setsys = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.Tsmi_exit = new System.Windows.Forms.ToolStripMenuItem();
@@ -60,6 +61,9 @@
             this.txt_hassend = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.timer_send = new System.Windows.Forms.Timer(this.components);
+            this.label8 = new System.Windows.Forms.Label();
+            this.lbl_settime = new System.Windows.Forms.Label();
+            this.rb_status = new System.Windows.Forms.RadioButton();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -80,6 +84,7 @@
             // 系统SToolStripMenuItem
             // 
             this.系统SToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmi_settime,
             this.Tsmi_setsys,
             this.toolStripSeparator2,
             this.Tsmi_exit});
@@ -87,22 +92,29 @@
             this.系统SToolStripMenuItem.Size = new System.Drawing.Size(82, 29);
             this.系统SToolStripMenuItem.Text = "系统(S)";
             // 
+            // tsmi_settime
+            // 
+            this.tsmi_settime.Name = "tsmi_settime";
+            this.tsmi_settime.Size = new System.Drawing.Size(229, 30);
+            this.tsmi_settime.Text = "设置执行时间(&T)";
+            this.tsmi_settime.Click += new System.EventHandler(this.tsmi_settime_Click);
+            // 
             // Tsmi_setsys
             // 
             this.Tsmi_setsys.Name = "Tsmi_setsys";
-            this.Tsmi_setsys.Size = new System.Drawing.Size(210, 30);
+            this.Tsmi_setsys.Size = new System.Drawing.Size(229, 30);
             this.Tsmi_setsys.Text = "设置系统(&S)";
             this.Tsmi_setsys.Click += new System.EventHandler(this.Tsmi_setsys_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(207, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(226, 6);
             // 
             // Tsmi_exit
             // 
             this.Tsmi_exit.Name = "Tsmi_exit";
-            this.Tsmi_exit.Size = new System.Drawing.Size(210, 30);
+            this.Tsmi_exit.Size = new System.Drawing.Size(229, 30);
             this.Tsmi_exit.Text = "退出系统(&X)";
             this.Tsmi_exit.Click += new System.EventHandler(this.Tsmi_exit_Click);
             // 
@@ -332,11 +344,44 @@
             this.timer_send.Interval = 1000;
             this.timer_send.Tick += new System.EventHandler(this.timer_send_Tick);
             // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(424, 171);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(121, 20);
+            this.label8.TabIndex = 22;
+            this.label8.Text = "设定执行时间：";
+            // 
+            // lbl_settime
+            // 
+            this.lbl_settime.AutoSize = true;
+            this.lbl_settime.Location = new System.Drawing.Point(566, 171);
+            this.lbl_settime.Name = "lbl_settime";
+            this.lbl_settime.Size = new System.Drawing.Size(51, 20);
+            this.lbl_settime.TabIndex = 23;
+            this.lbl_settime.Text = "label9";
+            // 
+            // rb_status
+            // 
+            this.rb_status.AutoSize = true;
+            this.rb_status.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.rb_status.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
+            this.rb_status.Location = new System.Drawing.Point(397, 171);
+            this.rb_status.Name = "rb_status";
+            this.rb_status.Size = new System.Drawing.Size(21, 20);
+            this.rb_status.TabIndex = 24;
+            this.rb_status.TabStop = true;
+            this.rb_status.UseVisualStyleBackColor = false;
+            // 
             // MainFrm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(911, 506);
+            this.Controls.Add(this.rb_status);
+            this.Controls.Add(this.lbl_settime);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.txt_hassend);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.txt_nono);
@@ -410,6 +455,10 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ToolStripStatusLabel tsslbl_errrows;
         private System.Windows.Forms.Timer timer_send;
+        private System.Windows.Forms.ToolStripMenuItem tsmi_settime;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label lbl_settime;
+        private System.Windows.Forms.RadioButton rb_status;
     }
 }
 

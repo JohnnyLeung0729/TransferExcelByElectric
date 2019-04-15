@@ -36,28 +36,29 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(232, 25);
+            this.label1.Location = new System.Drawing.Point(261, 31);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(127, 32);
+            this.label1.Size = new System.Drawing.Size(149, 38);
             this.label1.TabIndex = 0;
-            this.label1.Text = "和瑞众联";
+            this.label1.Text = "合瑞众联";
             // 
             // lbl_version
             // 
             this.lbl_version.AutoSize = true;
-            this.lbl_version.Location = new System.Drawing.Point(266, 90);
+            this.lbl_version.Location = new System.Drawing.Point(299, 112);
             this.lbl_version.Name = "lbl_version";
-            this.lbl_version.Size = new System.Drawing.Size(0, 17);
+            this.lbl_version.Size = new System.Drawing.Size(0, 20);
             this.lbl_version.TabIndex = 1;
             // 
             // aboutme
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(596, 132);
+            this.ClientSize = new System.Drawing.Size(670, 165);
             this.Controls.Add(this.lbl_version);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "aboutme";

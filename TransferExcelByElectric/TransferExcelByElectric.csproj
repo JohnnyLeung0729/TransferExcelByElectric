@@ -64,6 +64,12 @@
     </Compile>
     <Compile Include="DB\OperateIniFile.cs" />
     <Compile Include="DB\ReturnJson1.cs" />
+    <Compile Include="FrmSettime.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmSettime.Designer.cs">
+      <DependentUpon>FrmSettime.cs</DependentUpon>
+    </Compile>
     <Compile Include="HttpGetPost.cs" />
     <Compile Include="MainFrm.cs">
       <SubType>Form</SubType>
@@ -75,6 +81,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="aboutme.resx">
       <DependentUpon>aboutme.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmSettime.resx">
+      <DependentUpon>FrmSettime.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainFrm.resx">
       <DependentUpon>MainFrm.cs</DependentUpon>

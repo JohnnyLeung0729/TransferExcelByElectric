@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.OleDb;
 using System.Data.SQLite;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -24,12 +25,42 @@ namespace TransferExcelByElectric
         String postadd = "null";
         String scanspan = "0";
         int opline = 0;
-        
+        String settime = "null";
+
         String smstitle = "";
         String smsFname = "";
         String fontpath = "";
 
+        String formmaintitle = "";
+
         SQLiteConnection m_dbConnection;
+
+        public Label Lbl_settime
+        {
+            get
+            {
+                return lbl_settime;
+            }
+
+            set
+            {
+                lbl_settime = value;
+            }
+        }
+
+        public string Settime
+        {
+            get
+            {
+                return settime;
+            }
+
+            set
+            {
+                settime = value;
+            }
+        }
+
         public MainFrm()
         {
             InitializeComponent();
@@ -39,6 +70,7 @@ namespace TransferExcelByElectric
             //Load config file path and name
             configfile = Application.StartupPath + "\\DB\\elecon.ini";
             dbfile = Application.StartupPath + "\\DB\\";
+            formmaintitle = this.Text;
 
             //Read ini config
             excelfile =DB.OperateIniFile.ReadIniData("CONFIG", "filepath1", "null", configfile);
@@ -117,7 +149,7 @@ namespace TransferExcelByElectric
             {
                 txt_scanspan.Text = scanspan;
                 Prob_scanspan.Maximum = Convert.ToInt32(scanspan);
-                Prob_scanspan.Value= Convert.ToInt32(scanspan)-30;
+                //Prob_scanspan.Value= Convert.ToInt32(scanspan)-30;
             }
             String oplines = DB.OperateIniFile.ReadIniData("CONFIG", "sendcol", "null", configfile);
             if (excelfile.Equals("null"))
@@ -137,6 +169,19 @@ namespace TransferExcelByElectric
                     Environment.Exit(0);
                 }
                 Console.WriteLine(opline);
+            }
+            settime = DB.OperateIniFile.ReadIniData("CONFIG", "spantime", "null", configfile);
+            if (settime.Equals("null"))
+            {
+                lbl_settime.Text = TransferExcelByElectric.Properties.Resources.str_notime;
+                lbl_settime.Font = new Font("Microsoft Sans Serif", 11f, FontStyle.Bold);
+                lbl_settime.ForeColor = Color.Red;
+            }
+            else
+            {
+                lbl_settime.Text = settime;
+                lbl_settime.Font = new Font("Microsoft Sans Serif", 8f, FontStyle.Regular);
+                lbl_settime.ForeColor = Color.Black;
             }
         }
 
@@ -271,7 +316,7 @@ namespace TransferExcelByElectric
         {
             if (MessageBox.Show(TransferExcelByElectric.Properties.Resources.str_closesys, TransferExcelByElectric.Properties.Resources.str_closesys_title, MessageBoxButtons.OKCancel, MessageBoxIcon.Question)==DialogResult.OK)
             {
-                Environment.Exit(0);
+                Process.GetCurrentProcess().Kill();
             }
         }
 
@@ -285,6 +330,12 @@ namespace TransferExcelByElectric
 
         private void btn_startend_Click(object sender, EventArgs e)
         {
+            if (settime.Equals("null"))
+            {
+                MessageBox.Show("没有设定执行时间无法开启运行！", "停止", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                return;
+            }
+
             if (Prob_scanspan.Tag.Equals(0))
             {
                 timer_send.Stop();
@@ -303,13 +354,22 @@ namespace TransferExcelByElectric
 
         private void timer_send_Tick(object sender, EventArgs e)
         {
-            if (Prob_scanspan.Value == Prob_scanspan.Maximum)
+            this.Text = formmaintitle + "【" + DateTime.Now.ToLongTimeString() + "】";
+            if (rb_status.Checked)
             {
-                Prob_scanspan.Value = 0;
+                rb_status.Checked = false;
+            }else
+            {
+                rb_status.Checked = true;
+            }
+
+            if (DateTime.Now.ToLongTimeString().Equals(settime))
+            {
+                //Prob_scanspan.Value = 0;
                 new Thread(() => { execute_loadfile_sendsms(); }).Start();
                 //Console.WriteLine(DateTime.Now.ToString());
             }
-            Prob_scanspan.Value += 1;
+            //Prob_scanspan.Value += 1;
             //Console.WriteLine(Prob_scanspan.Value);
         }
 
@@ -322,5 +382,12 @@ namespace TransferExcelByElectric
         {
             MessageBox.Show(TransferExcelByElectric.Properties.Resources.str_noapp, TransferExcelByElectric.Properties.Resources.str_noapp_title, MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+
+        private void tsmi_settime_Click(object sender, EventArgs e)
+        {
+            new FrmSettime(this).ShowDialog();
+        }
+
+        
     }
 }

@@ -167,5 +167,14 @@ namespace TransferExcelByElectric.Properties {
                 return ResourceManager.GetString("str_noapp_title", resourceCulture);
             }
         }
+        
+        /// <summary>
+        ///   查找类似 未设定执行时间，设定后操作 的本地化字符串。
+        /// </summary>
+        internal static string str_notime {
+            get {
+                return ResourceManager.GetString("str_notime", resourceCulture);
+            }
+        }
     }
 }

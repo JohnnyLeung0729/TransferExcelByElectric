@@ -117,43 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="btn_startend" xml:space="preserve">
-    <value>开    始</value>
-  </data>
-  <data name="btn_startend_stop" xml:space="preserve">
-    <value>暂    停</value>
-  </data>
-  <data name="send_port_template" xml:space="preserve">
-    <value>?phone={0}&amp;customer_no={1}&amp;name={2}&amp;date={3}&amp;email={4}</value>
-  </data>
-  <data name="str_closesys" xml:space="preserve">
-    <value>您确认关闭系统，请确认系统没有在执行的任务。</value>
-  </data>
-  <data name="str_closesys_title" xml:space="preserve">
-    <value>关闭系统</value>
-  </data>
-  <data name="str_errconfigfile" xml:space="preserve">
-    <value>读取配置文件失败，请确认程序目录下的\\DB文件夹中存在名为elecon.ini文件，并正确配置！</value>
-  </data>
-  <data name="str_errconfigfile_title" xml:space="preserve">
-    <value>系统文件缺失</value>
-  </data>
-  <data name="str_errexcelname" xml:space="preserve">
-    <value>调用数据源文件名错误！</value>
-  </data>
-  <data name="str_errexcelname_title" xml:space="preserve">
-    <value>系统文件错误</value>
-  </data>
-  <data name="str_errloadexcel" xml:space="preserve">
-    <value>调用数据源文件出错！</value>
-  </data>
-  <data name="str_noapp" xml:space="preserve">
-    <value>功能即将开通，请联系管理员</value>
-  </data>
-  <data name="str_noapp_title" xml:space="preserve">
-    <value>未开通功能</value>
-  </data>
-  <data name="str_notime" xml:space="preserve">
-    <value>未设定执行时间，设定后操作</value>
-  </data>
 </root>
