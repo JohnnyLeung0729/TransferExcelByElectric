@@ -127,6 +127,15 @@ namespace TransferExcelByElectric
                     sql = "create index smslogindex on smslog(qybm)";
                     command = new SQLiteCommand(sql, m_dbConnection);
                     command.ExecuteNonQuery();
+                    sql = "create table oplog (errinfo text, intime datetime,errcode varchar(8),memo varchar(64))";
+                    command = new SQLiteCommand(sql, m_dbConnection);
+                    command.ExecuteNonQuery();
+                    sql = "create index searchopindex on oplog(errcode,intime)";
+                    command = new SQLiteCommand(sql, m_dbConnection);
+                    command.ExecuteNonQuery();
+                    sql = "create index oplogindex on oplog(errcode)";
+                    command = new SQLiteCommand(sql, m_dbConnection);
+                    command.ExecuteNonQuery();
                 }
             }
             postadd = DB.OperateIniFile.ReadIniData("CONFIG", "postadd", "null", configfile);
@@ -198,18 +207,20 @@ namespace TransferExcelByElectric
             //    }
             //}
 
-            HttpGetPost hgp = new HttpGetPost();
-            String sreturn = hgp.HttpPost(postadd + "?phone=15869160854&customer_no=133000028801&name=测试&date=2019年4月&email=42374235@qq.com", "");
-            MessageBox.Show(sreturn);
-            ReturnJson1 test = JsonConvert.DeserializeObject<DB.ReturnJson1>(sreturn);
-            MessageBox.Show(test.Message);
-            MessageBox.Show(test.Code.ToString());
+            //HttpGetPost hgp = new HttpGetPost();
+            //String sreturn = hgp.HttpPost(postadd + "?phone=15869160854&customer_no=133000028801&name=测试&date=2019年4月&email=42374235@qq.com", "");
+            //MessageBox.Show(sreturn);
+            //ReturnJson1 test = JsonConvert.DeserializeObject<DB.ReturnJson1>(sreturn);
+            //MessageBox.Show(test.Message);
+            //MessageBox.Show(test.Code.ToString());
+
+            writeLine("测试系统", "E0001002", "tester");
         }
 
         #region
         public DataSet ExcelToDS(string Path)
         {
-            string strConn = "Provider=Microsoft.Jet.OLEDB.4.0;" + "Data Source=" + Path + ";" + "Extended Properties=Excel 8.0;";
+            string strConn = "Provider=Microsoft.Jet.OLEDB.4.0;" + "Data Source=" + Path + ";" + "Extended Properties='Excel 8.0;IMEX=1';";
             string strExcel = "";
             OleDbDataAdapter myCommand = null;
             DataSet ds = null;
@@ -267,7 +278,7 @@ namespace TransferExcelByElectric
                         string sendstr = String.Format(TransferExcelByElectric.Properties.Resources.send_port_template, ds.Tables[0].Rows[i][9].ToString(), ds.Tables[0].Rows[i][0].ToString(), ds.Tables[0].Rows[i][1].ToString(), smstitle, ds.Tables[0].Rows[i][10].ToString());
                         Console.WriteLine(sendstr);
 
-                        string sql = "select * from smslog where qybm='"+ ds.Tables[0].Rows[i][0].ToString() + "' and fszt='0' order by fssj desc";
+                        string sql = "select * from smslog where qybm='" + ds.Tables[0].Rows[i][0].ToString() + "' and fszt='0' order by fssj desc";
                         SQLiteCommand command = new SQLiteCommand(sql, m_dbConnection);
                         SQLiteDataReader reader = command.ExecuteReader();
                         if (reader.HasRows)
@@ -287,7 +298,7 @@ namespace TransferExcelByElectric
                             {
                                 stat = "0";
                                 sendrows += 1;
-                                sql = "delete from smslog where qybm = '"+ ds.Tables[0].Rows[i][0].ToString() + "' and fszt='1'";
+                                sql = "delete from smslog where qybm = '" + ds.Tables[0].Rows[i][0].ToString() + "' and fszt='1'";
                                 command = new SQLiteCommand(sql, m_dbConnection);
                                 command.ExecuteNonQuery();
                             }
@@ -295,11 +306,14 @@ namespace TransferExcelByElectric
                             {
                                 errorrows += 1;
                             }
-                            sql = "insert into smslog (qybm, qyname,sjhm,email,fszt,fssj) values ('" + ds.Tables[0].Rows[i][0].ToString() + "','" + ds.Tables[0].Rows[i][1].ToString() + "','" + ds.Tables[0].Rows[i][9].ToString() + "','" + ds.Tables[0].Rows[i][10].ToString() + "','"+ stat + "','" + DateTime.Now.ToString() + "')";
+                            sql = "insert into smslog (qybm, qyname,sjhm,email,fszt,fssj) values ('" + ds.Tables[0].Rows[i][0].ToString() + "','" + ds.Tables[0].Rows[i][1].ToString() + "','" + ds.Tables[0].Rows[i][9].ToString() + "','" + ds.Tables[0].Rows[i][10].ToString() + "','" + stat + "','" + DateTime.Now.ToString() + "')";
                             command = new SQLiteCommand(sql, m_dbConnection);
                             command.ExecuteNonQuery();
                         }
                     }
+                }
+                else {
+                    writeLine("【" + ds.Tables[0].Rows[i][0].ToString() + "】" + ds.Tables[0].Rows[i][1].ToString() + "(没有已发送标记，略过)", "T111", "------");
                 }
                 //间歇发送时间间隔
                 Thread.Sleep(800);
@@ -388,6 +402,13 @@ namespace TransferExcelByElectric
             new FrmSettime(this).ShowDialog();
         }
 
+        private void writeLine(String connect,String errcode,String memo)
+        {
+            String sql = "insert into oplog (errinfo, intime,errcode,memo) values ('"+ connect + "','"+ DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + "','"+ errcode + "','"+ memo + "')";
+            SQLiteCommand command = new SQLiteCommand(sql, m_dbConnection);
+
+            command.ExecuteNonQuery();
+        }
         
     }
 }

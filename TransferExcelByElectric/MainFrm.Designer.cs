@@ -95,26 +95,26 @@
             // tsmi_settime
             // 
             this.tsmi_settime.Name = "tsmi_settime";
-            this.tsmi_settime.Size = new System.Drawing.Size(229, 30);
+            this.tsmi_settime.Size = new System.Drawing.Size(228, 30);
             this.tsmi_settime.Text = "设置执行时间(&T)";
             this.tsmi_settime.Click += new System.EventHandler(this.tsmi_settime_Click);
             // 
             // Tsmi_setsys
             // 
             this.Tsmi_setsys.Name = "Tsmi_setsys";
-            this.Tsmi_setsys.Size = new System.Drawing.Size(229, 30);
+            this.Tsmi_setsys.Size = new System.Drawing.Size(228, 30);
             this.Tsmi_setsys.Text = "设置系统(&S)";
             this.Tsmi_setsys.Click += new System.EventHandler(this.Tsmi_setsys_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(226, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(225, 6);
             // 
             // Tsmi_exit
             // 
             this.Tsmi_exit.Name = "Tsmi_exit";
-            this.Tsmi_exit.Size = new System.Drawing.Size(229, 30);
+            this.Tsmi_exit.Size = new System.Drawing.Size(228, 30);
             this.Tsmi_exit.Text = "退出系统(&X)";
             this.Tsmi_exit.Click += new System.EventHandler(this.Tsmi_exit_Click);
             // 
