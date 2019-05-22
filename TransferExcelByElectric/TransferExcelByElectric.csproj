@@ -65,6 +65,12 @@
     </Compile>
     <Compile Include="DB\OperateIniFile.cs" />
     <Compile Include="DB\ReturnJson1.cs" />
+    <Compile Include="FrmDataviewer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmDataviewer.Designer.cs">
+      <DependentUpon>FrmDataviewer.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmSettime.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -83,6 +89,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="aboutme.resx">
       <DependentUpon>aboutme.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmDataviewer.resx">
+      <DependentUpon>FrmDataviewer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmSettime.resx">
       <DependentUpon>FrmSettime.cs</DependentUpon>

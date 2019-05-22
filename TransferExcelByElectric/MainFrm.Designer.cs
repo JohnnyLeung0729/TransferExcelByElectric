@@ -282,13 +282,12 @@
             // 
             // btn_test
             // 
-            this.btn_test.Enabled = false;
             this.btn_test.Location = new System.Drawing.Point(760, 366);
             this.btn_test.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btn_test.Name = "btn_test";
             this.btn_test.Size = new System.Drawing.Size(104, 54);
             this.btn_test.TabIndex = 16;
-            this.btn_test.Text = "测试系统";
+            this.btn_test.Text = "查看报表";
             this.btn_test.UseVisualStyleBackColor = true;
             this.btn_test.Click += new System.EventHandler(this.btn_test_Click);
             // 

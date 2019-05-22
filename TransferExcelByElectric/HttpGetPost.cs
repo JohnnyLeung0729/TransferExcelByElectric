@@ -18,7 +18,15 @@ namespace TransferExcelByElectric
             request.ContentType = "application/x-www-form-urlencoded";
             request.ContentLength = Encoding.UTF8.GetByteCount(postDataStr);
             request.CookieContainer = cookie;
-            Stream myRequestStream = request.GetRequestStream();
+            Stream myRequestStream = null; 
+            try//对于网络传输错误问题进行捕捉修改。
+            {
+                myRequestStream= request.GetRequestStream();
+            }
+            catch (WebException e) {
+                Console.WriteLine(e.Message);
+                return null;
+            }
             StreamWriter myStreamWriter = new StreamWriter(myRequestStream, Encoding.GetEncoding("gb2312"));
             myStreamWriter.Write(postDataStr);
             myStreamWriter.Close();

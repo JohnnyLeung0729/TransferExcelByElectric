@@ -193,28 +193,14 @@ namespace TransferExcelByElectric
                 lbl_settime.ForeColor = Color.Black;
             }
         }
-
+        /// <summary>
+        /// 查看报表按钮
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btn_test_Click(object sender, EventArgs e)
         {
-            //DataSet ds = ExcelToDS(excelfile);
-            //Console.WriteLine(ds.Tables.Count);
-            //MessageBox.Show(ds.Tables[0].Rows[ds.Tables[0].Rows.Count - 400]["用户名称"].ToString());
-            //for(int i = 0; i < ds.Tables[0].Rows.Count;i++)
-            //{
-            //    if (ds.Tables[0].Rows[i][opline].ToString().Equals("已发送"))
-            //    {
-            //        MessageBox.Show(ds.Tables[0].Rows[i][1].ToString());
-            //    }
-            //}
-
-            //HttpGetPost hgp = new HttpGetPost();
-            //String sreturn = hgp.HttpPost(postadd + "?phone=15869160854&customer_no=133000028801&name=测试&date=2019年4月&email=42374235@qq.com", "");
-            //MessageBox.Show(sreturn);
-            //ReturnJson1 test = JsonConvert.DeserializeObject<DB.ReturnJson1>(sreturn);
-            //MessageBox.Show(test.Message);
-            //MessageBox.Show(test.Code.ToString());
-
-            writeLine("测试系统", "E0001002", "tester");
+            FrmDataviewer fdv = new FrmDataviewer(dbfile);
         }
 
         #region
@@ -292,7 +278,15 @@ namespace TransferExcelByElectric
                             //短信发送接口
                             String sreturn = hgp.HttpPost(postadd + sendstr, "");
                             Console.WriteLine(sreturn);
-                            ReturnJson1 postback = JsonConvert.DeserializeObject<DB.ReturnJson1>(sreturn);
+                            ReturnJson1 postback;
+                            if (sreturn == null)
+                            {
+                                postback = new ReturnJson1();
+                                postback.Code = 1;
+                            }
+                            else {
+                                postback = JsonConvert.DeserializeObject<DB.ReturnJson1>(sreturn);
+                            }
                             String stat = "1";
                             if (postback.Code == 0)
                             {
